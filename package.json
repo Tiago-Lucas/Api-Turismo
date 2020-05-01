@@ -1,5 +1,5 @@
 {
-  "name": "unidesc-node-rest-api",
+  "name": "api-turismo2",
   "version": "0.0.1",
   "description": "uma aplicacao node",
   "main": "app.js",
@@ -10,9 +10,10 @@
   "author": "Lucas Tiago",
   "license": "ISC",
   "dependencies": {
+    "body-parse": "^0.1.0",
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
-    "mongoose": "^5.9.7",
+    "mongoose": "^5.9.9",
     "morgan": "^1.10.0"
   },
   "devDependencies": {

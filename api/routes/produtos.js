@@ -3,12 +3,15 @@ const router = express.Router();
 const Produto = require('../models/produtos')
 const mongoose = require('mongoose')
 
-//Criar um produto//
+//Criar um cadastro//
 router.post('/', (req, res, next) =>{
     const produto = new Produto({
         _id: new mongoose.Types.ObjectId(),
-        nome: req.body.nome,
-        preco: req.body.preco
+        Nome : String,
+        email: String,
+        nascimento: String,
+        senha: Number,
+        sexo: String
     })
     produto.save()
     .then(result =>{
