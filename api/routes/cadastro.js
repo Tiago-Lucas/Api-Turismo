@@ -1,38 +1,27 @@
 const express =require ('express');
 const router = express.Router();
-const Produto = require('../models/produtos')
+const Cadastro = require('../models/cadastro')
 const mongoose = require('mongoose')
 
-//Criar um cadastro//
-router.post('/', (req, res, next) =>{
-    const produto = new Produto({
-        _id: new mongoose.Types.ObjectId(),
-        Nome : String,
-        email: String,
-        nascimento: String,
-        senha: Number,
-        sexo: String
-    })
-    produto.save()
+//Criar um cadastro //
+router.post('/usuario', (req, res, next) =>{
+    const cadastro = new Cadastro(req.body)
+    cadastro.save()
     .then(result =>{
-        console.log(result)
         res.status(201).json({
-            mensagem: 'Produto Criado',
-            produtoCriado: produto
+            mensagem: 'cadastro Criado',
         })
-        
-    })
     .catch(err => {
         res.status(500).json({
             error: err
         })
-    
+});
 });
 });
 //Buscando produto pelo id//
-router.get('/:produtoId', (req, res, next) =>{
-    const id = req.params.produtoId;
-    Produto.findById(id)
+router.get('/:cadastroId', (req, res, next) =>{
+    const id = req.params.cadastroId;
+    Cadastro.findById(id)
     .exec()
     .then(doc => {
         res.status(200).json(doc);
@@ -44,8 +33,8 @@ router.get('/:produtoId', (req, res, next) =>{
     });
 
 //Buscando todos os produtos//
-router.get('/',(req, res, next)=>{
-    Produto.find()
+router.get('/usuario',(req, res, next)=>{
+    Cadastro.find()
     .exec()
     .then(doc=>{
         console.log(doc)
@@ -58,37 +47,33 @@ router.get('/',(req, res, next)=>{
 })
 
 //Deletando um produto//
-router.delete('/:produtoId', (req, res, next) =>{
-    const id = req.params.produtoId;
-    Produto.deleteOne({_id : id})
+router.delete('/:cadastroId', (req, res, next) =>{
+    const id = req.params.cadastroId;
+    Cadastro.deleteOne({_id : id})
     .exec()
     .then(result => {
         console.log(result)
         res.status(200).json({
-            mensagem:'Produto deletado'
+            mensagem:'cadastro deletado'
         });
     })
     .catch(err =>{
         res.status(500).json({error:err})
     })
-    
     });
-
 //atualizando os produtos//
-router.put('/:produtoId', (req, res, next) => {
-    const id = req.params.produtoId;
-    Produto.updateOne({ _id: id }, req.body)
+router.put('/:cadastroId', (req, res, next) => {
+    const id = req.params.cadastroId;
+    Cadastro.updateOne({ _id: id }, req.body)
         .exec()
         .then(doc => {
             res.status(200).json({
-                message: 'Produto atualizado',
-                produtoCriado:req.body
+                message: 'Cadastro atualizado',
+                CadastroCriado:req.body
             });
         })
         .catch(err => {
             res.status(500).json({ error: err });
         })
 });
-
-
 module.exports = router;

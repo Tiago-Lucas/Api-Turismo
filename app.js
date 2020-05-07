@@ -6,9 +6,9 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
 
-const produtoRoutes = require('./api/routes/produtos');
+const cadastroRoutes = require('./api/routes/cadastro');
 
-mongoose.connect('mongodb+srv://<Usuario>:<Senha>@cluster0-hc1ei.mongodb.net/test?retryWrites=true&w=majority',{
+mongoose.connect('mongodb+srv://turismo:turismo123@cluster0-vwvbn.mongodb.net/test?retryWrites=true&w=majority',{
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
@@ -27,7 +27,7 @@ app.use((req, res, next)=>{
     next();
 });
 
-app.use('/produtos', produtoRoutes);
+app.use('/cadastro', cadastroRoutes);
 
 
 
