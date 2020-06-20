@@ -12,6 +12,10 @@ const usuarioSchema = new Schema({
         type: String,
         required: true,
         trim: true
+    },
+    photo: {
+        type: String,
+        trim: true
     }
 }, { versionKey: false })
 

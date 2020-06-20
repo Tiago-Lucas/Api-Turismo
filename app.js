@@ -1,11 +1,10 @@
 const express = require('express');
-
 const app = express();
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb+srv://turismo:turismo123@cluster0-vwvbn.mongodb.net/test?retryWrites=true&w=majority', {
+mongoose.connect('mongodb+srv://corona-api:123@cluster0-zjpdm.mongodb.net/<dbname>?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
